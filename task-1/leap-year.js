@@ -3,15 +3,13 @@ const prompt = promptSync();
 
 let year = Number(prompt("Enter year:"));
 
-if (year >= 0 && year <= 9999) {
-    if (year % 400 === 0) {
-        console.log(`Yes, year ${year} is leap`);
-    } else if (year % 4 === 0 && year % 100 !== 0) {
-        console.log(`Yes, year ${year} is leap`);
-    } else {
-        console.log(`No, year ${year} is not leap`);
-    }
-} else {
+if (!Number.isInteger(year) || year < 1 || year > 9999) {
     console.log("Invalid year");
+} else if ((year % 400 === 0) ||
+    (year % 4 === 0 && year % 100 !== 0)
+) {
+    console.log(`Yes, the year ${year} is a leap year.`);
+} else {
+    console.log(`No, year ${year} is not a leap year`);
 }
 
